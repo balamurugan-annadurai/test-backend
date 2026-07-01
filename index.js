@@ -1,11 +1,14 @@
 import express from "express"
 import dotenv from "dotenv"
+import cors from "cors"
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors())
 
 let users = [
     {
@@ -103,11 +106,11 @@ app.delete("/users/:id", (req, res) => {
         })
     }
 
-    users = users.filter((user) => (user.id !== id)) 
+    users = users.filter((user) => (user.id !== id))
 
     res.json({
         success: true,
-        message:"User deleted successfully"
+        message: "User deleted successfully"
     })
 })
 
